@@ -26,30 +26,30 @@ def main():
     @st.cache(persist=True)
     def split(df):
         y = df.type
-        x = df.drop(columns=['type'])
-        x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.7, random_state=0)
-        return x_train, x_test, y_train, y_test
+        X = df.drop(columns=['type'])
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+        return X_train, X_test, y_train, y_test
     
     def plot_metrics(metrics_list):
         if 'Confusion Matrix' in metrics_list:
             st.subheader("Confusion Matrix")
-            plot_confusion_matrix(model, x_test, y_test, display_labels=class_names)
+            plot_confusion_matrix(model, X_test, y_test, display_labels=class_names)
             st.pyplot()
 
         if 'ROC Curve' in metrics_list:
             st.subheader("ROC Curve")
-            plot_roc_curve(model, x_test, y_test)
+            plot_roc_curve(model, X_test, y_test)
             st.pyplot()
         
         if 'Precision-Recall Curve' in metrics_list:
             st.subheader('Precision-Recall Curve')
-            plot_precision_recall_curve(model, x_test, y_test)
+            plot_precision_recall_curve(model, X_test, y_test)
             st.pyplot()
 
     df = load_data()
     class_names = ['Edible', 'Poisonous']
     
-    x_train, x_test, y_train, y_test = split(df)
+    X_train, X_test, y_train, y_test = split(df)
 
     st.sidebar.subheader("Choose your Classifier")
     classifier = st.sidebar.selectbox("Classifier", ("Support Vector Machine (SVM)", "Logistic Regression", "Random Forest"))
@@ -66,9 +66,9 @@ def main():
         if st.sidebar.button("Classify", key='classify'):
             st.subheader("Support Vector Machine (SVM) Results")
             model = SVC(C=C, kernel=kernel, gamma=gamma)
-            model.fit(x_train, y_train)
-            accuracy = model.score(x_test, y_test)
-            y_pred = model.predict(x_test)
+            model.fit(X_train, y_train)
+            accuracy = model.score(X_test, y_test)
+            y_pred = model.predict(X_test)
             st.write("Accuracy: ", accuracy.round(2))
             st.write("Precision: ", precision_score(y_test, y_pred, labels=class_names).round(2))
             st.write("Recall: ", recall_score(y_test, y_pred, labels=class_names).round(2))
@@ -84,9 +84,9 @@ def main():
         if st.sidebar.button("Classify", key='classify'):
             st.subheader("Logistic Regression Results")
             model = LogisticRegression(C=C, penalty='l5', max_iter=max_iter)
-            model.fit(x_train, y_train)
-            accuracy = model.score(x_test, y_test)
-            y_pred = model.predict(x_test)
+            model.fit(X_train, y_train)
+            accuracy = model.score(X_test, y_test)
+            y_pred = model.predict(X_test)
             st.write("Accuracy: ", accuracy.round(2))
             st.write("Precision: ", precision_score(y_test, y_pred, labels=class_names).round(2))
             st.write("Recall: ", recall_score(y_test, y_pred, labels=class_names).round(2))
@@ -102,9 +102,9 @@ def main():
         if st.sidebar.button("Classify", key='classify'):
             st.subheader("Random Forest Results")
             model = RandomForestClassifier(n_estimators=n_estimators, max_depth=max_depth, bootstrap=bootstrap, n_jobs=-1)
-            model.fit(x_train, y_train)
-            accuracy = model.score(x_test, y_test)
-            y_pred = model.predict(x_test)
+            model.fit(X_train, y_train)
+            accuracy = model.score(X_test, y_test)
+            y_pred = model.predict(X_test)
             st.write("Accuracy: ", accuracy.round(2))
             st.write("Precision: ", precision_score(y_test, y_pred, labels=class_names).round(2))
             st.write("Recall: ", recall_score(y_test, y_pred, labels=class_names).round(2))
