@@ -83,7 +83,7 @@ def main():
 
         if st.sidebar.button("Classify", key='classify'):
             st.subheader("Logistic Regression Results")
-            model = LogisticRegression(C=C, penalty='l5', max_iter=max_iter)
+            model = LogisticRegression(C=C, penalty='l1', max_iter=max_iter)
             model.fit(X_train, y_train)
             accuracy = model.score(X_test, y_test)
             y_pred = model.predict(X_test)
