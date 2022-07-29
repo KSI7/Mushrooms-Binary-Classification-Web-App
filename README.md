@@ -13,7 +13,7 @@ A Binary Classification Web App which classifies hypothetical samples of 23 spec
 
 Different Model Hyperparameters have been included with different classifiers with varying results.
 
-### [Deployment Link](https://ksi7-binary-classification-web-app-app-8prmpv.streamlitapp.com/)
+### [Deployment Link](https://ksi7-mushrooms-binary-classification-web-app-app-nxwpuf.streamlitapp.com/)
 
 ### To run - (locally)
 1. Clone the repository.
