@@ -13,13 +13,17 @@ A Binary Classification Web App which classifies hypothetical samples of 23 spec
 
 Different Model Hyperparameters have been included with different classifiers with varying results.
 
-### To run -
+### [Deployment Link](https://ksi7-binary-classification-web-app-app-8prmpv.streamlitapp.com/)
+
+### To run - (locally)
 1. Clone the repository.
 2. Open the app.py file using either an IDE or a text editor and set the path to the mushrooms.csv dataset (Line 20).
 3. Open Command Prompt and change the directory to that of the clone using the **cd** command.
-4. To host the web app on the localhost, type the following in Command Prompt 
+4. Run the following command to install all dependencies - 
+ > **python pip install -r requirements.txt**
+5. To host the web app on the localhost, type the following in Command Prompt or Windows Powershell (recommended) -
  > **streamlit run app.py**
-5. Your web app will be successfully hosted on the localhost.
+6. Your web app will be successfully hosted on the localhost.
 
 ### Libraries -
 
