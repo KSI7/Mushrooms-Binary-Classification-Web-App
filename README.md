@@ -1,4 +1,4 @@
-# Binary-Classification-Web-App
+# Mushrooms-Binary-Classification-Web-App
 A Binary Classification Web App which classifies hypothetical samples of 23 species of gilled mushrooms into definitely edible, definitely poisonous or of unknown edibility and not recommended. This latter class was combined with the poisonous one. The results show the model's accuracy, precision and recall values.
 
 ### Classifiers 
