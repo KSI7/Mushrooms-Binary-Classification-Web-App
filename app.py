@@ -10,8 +10,8 @@ from sklearn.metrics import plot_confusion_matrix, plot_roc_curve, plot_precisio
 from sklearn.metrics import precision_score, recall_score
 
 def main():
-    st.title("Binary Classification Web App")
-    st.sidebar.title("Binary Classification Web App")
+    st.title("Mushrooms Binary Classification Web App")
+    st.sidebar.title("Mushrooms Binary Classification Web App")
     st.markdown("Can the mushrooms be trusted? 🍄")
     st.sidebar.markdown("Can the mushrooms be trusted? 🍄")
 
